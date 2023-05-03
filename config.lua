@@ -62,6 +62,8 @@ lvim.builtin.gitsigns.opts.signs.add.text = "+"
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.listchars:append({ tab = " - ", multispace = ".", leadmultispace = " " })
+vim.opt.list = true
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
