@@ -65,6 +65,12 @@ vim.opt.tabstop = 4
 vim.opt.listchars:append({ tab = " - ", multispace = ".", leadmultispace = " " })
 vim.opt.list = true
 
+-- Soft wrapping
+-- TODO: Add toggle keymap
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
     {
