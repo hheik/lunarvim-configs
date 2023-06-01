@@ -19,7 +19,6 @@ lvim.plugins = {
                     "json",
                     "less",
                     "markdown",
-                    "scss",
                     "typescript",
                     "typescriptreact",
                     "yaml",
@@ -60,8 +59,12 @@ lvim.builtin.gitsigns.opts.current_line_blame = true;
 lvim.builtin.gitsigns.opts.signs.add.text = "+"
 
 vim.opt.relativenumber = true
+
+-- Indentation
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = false
 vim.opt.listchars:append({ tab = " - ", multispace = ".", leadmultispace = " " })
 vim.opt.list = true
 
@@ -101,6 +104,9 @@ let $PATH = $HOME . '/.nvm/versions/node/v18.12.1/bin:' . $PATH
 -- Buffer navigation
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+
+-- Insert tab character
+lvim.keys.insert_mode["<S-Tab>"] = "<C-V><Tab>"
 
 -- Cursor/file navigation
 lvim.keys.normal_mode["<S-Up>"] = "10k"
