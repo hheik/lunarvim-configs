@@ -1,40 +1,40 @@
 lvim.plugins = {
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("null-ls").setup()
-        end,
-    },
-    {
-        "MunifTanjim/prettier.nvim",
-        config = function()
-            require("prettier").setup({
-                bin = 'prettierd',
-                filetypes = {
-                    "css",
-                    "graphql",
-                    "html",
-                    "javascript",
-                    "javascriptreact",
-                    "json",
-                    "less",
-                    "markdown",
-                    "typescript",
-                    "typescriptreact",
-                    "yaml",
-                },
-            })
-        end,
-    },
-    {
-        "windwp/nvim-ts-autotag",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("nvim-ts-autotag").setup({
-                -- optional config
-            })
-        end,
-    },
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("null-ls").setup()
+		end,
+	},
+	{
+		"MunifTanjim/prettier.nvim",
+		config = function()
+			require("prettier").setup({
+				bin = 'prettierd',
+				filetypes = {
+					"css",
+					"graphql",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"json",
+					"less",
+					"markdown",
+					"typescript",
+					"typescriptreact",
+					"yaml",
+				},
+			})
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("nvim-ts-autotag").setup({
+				-- optional config
+			})
+		end,
+	},
 }
 
 lvim.leader = "space"
@@ -76,17 +76,17 @@ vim.opt.breakindent = true
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-    {
-        command = "prettier",
-        -- extra_args = { "--print-width", "100" },
-        filetypes = {
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "json",
-        },
-    },
+	{
+		command = "prettier",
+		-- extra_args = { "--print-width", "100" },
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"json",
+		},
+	},
 }
 
 -- Make plugins use a newer version of node.
