@@ -108,6 +108,9 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- Insert tab character
 lvim.keys.insert_mode["<S-Tab>"] = "<C-V><Tab>"
 
+-- insert newline without exiting normal mode
+lvim.keys.normal_mode["<M-Enter>"] = "o<Esc>"
+
 -- Cursor/file navigation
 lvim.keys.normal_mode["<S-Up>"] = "10k"
 lvim.keys.normal_mode["<S-Down>"] = "10j"
