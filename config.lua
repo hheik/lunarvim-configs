@@ -109,7 +109,12 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.insert_mode["<S-Tab>"] = "<C-V><Tab>"
 
 -- insert newline without exiting normal mode
-lvim.keys.normal_mode["<M-Enter>"] = "o<Esc>"
+lvim.keys.normal_mode["<Enter>"] = ":call append(line('.'), '')<CR>"
+lvim.keys.normal_mode["<M-Enter>"] = ":call append(line('.')-1, '')<CR>"
+
+-- Remove newlines in normal mode
+lvim.keys.normal_mode["<BS>"] = "\"_dd"
+lvim.keys.normal_mode["<M-BS>"] = "mzk\"_ddg`z"
 
 -- Cursor/file navigation
 lvim.keys.normal_mode["<S-Up>"] = "10k"
