@@ -93,6 +93,8 @@ formatters.setup {
 -- Necessary if working with older node projects.
 -- To make the integrated terminal use the default nvm version, add the following to your .bashrc (or equivalent):
 -- `[ "$NVIM_APPNAME" = 'lvim' ] && nvm use default --silent`
+-- If your .bashrc equivalent checks for a .nvmrc file, add this before that check
+
 vim.cmd [[
 let $PATH = $HOME . '/.nvm/versions/node/v18.12.1/bin:' . $PATH
 ]]
