@@ -35,6 +35,70 @@ lvim.plugins = {
 			})
 		end,
 	},
+	{
+		"simrat39/rust-tools.nvim",
+		config = function()
+			require('rust-tools').setup()
+		end
+	},
+}
+
+-- Rust debugger using vscode extension for extra features
+-- Update this path
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb'
+local this_os = vim.loop.os_uname().sysname;
+-- The path in windows is different
+if this_os:find "Windows" then
+	codelldb_path = extension_path .. "adapter\\codelldb.exe"
+	liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
+else
+	-- The liblldb extension is .so for linux and .dylib for macOS
+	liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
+end
+
+local dap = require('dap')
+dap.adapters.codelldb = {
+	type = "server",
+	port = "${port}",
+	executable = {
+		command = codelldb_path,
+		args = { "--port", "${port}" },
+	},
+}
+
+dap.configurations.rust = {
+	{
+		name = "Rust debug",
+		type = "codelldb",
+		request = "launch",
+		program = "cargo",
+		args = {
+			"run",
+		},
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+		initCommands = function()
+			-- Find out where to look for the pretty printer Python module
+			local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+
+			local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+			local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+
+			local commands = {}
+			local file = io.open(commands_file, 'r')
+			if file then
+				for line in file:lines() do
+					table.insert(commands, line)
+				end
+				file:close()
+			end
+			table.insert(commands, 1, script_import)
+
+			return commands
+		end,
+	}
 }
 
 lvim.leader = "space"
