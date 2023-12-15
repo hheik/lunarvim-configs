@@ -102,7 +102,7 @@ dap.configurations.rust = {
 }
 
 lvim.leader = "space"
-lvim.colorscheme = "one-monokai-80"
+-- lvim.colorscheme = "one-monokai-80"
 lvim.format_on_save = true
 lvim.log.level = "info"
 
