@@ -189,12 +189,18 @@ lvim.keys.visual_mode["<S-Up>"] = "10k"
 lvim.keys.visual_mode["<S-Down>"] = "10j"
 lvim.keys.insert_mode["<S-Up>"] = "<C-o>10k"
 lvim.keys.insert_mode["<S-Down>"] = "<C-o>10j"
+
 lvim.keys.normal_mode["<S-PageUp>"] = "25k"
 lvim.keys.normal_mode["<S-PageDown>"] = "25j"
 lvim.keys.visual_mode["<S-PageUp>"] = "25k"
 lvim.keys.visual_mode["<S-PageDown>"] = "25j"
 lvim.keys.normal_mode["<C-PageUp>"] = "25<C-y>"
 lvim.keys.normal_mode["<C-PageDown>"] = "25<C-e>"
+
+lvim.keys.normal_mode["<Home>"] = "^"
+lvim.keys.normal_mode["<End>"] = "$"
+lvim.keys.insert_mode["<Home>"] = "<C-o>^"
+lvim.keys.insert_mode["<End>"] = "<C-o>$"
 
 -- Fast git review
 lvim.keys.normal_mode["<M-Up>"] =
