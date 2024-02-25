@@ -171,6 +171,9 @@ let $PATH = $HOME . '/.nvm/versions/node/v18.12.1/bin:' . $PATH
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
+-- Toggle wrapping
+lvim.keys.normal_mode["zz"] = ":set wrap! wrap?<CR>"
+
 -- Insert tab character
 lvim.keys.insert_mode["<S-Tab>"] = "<C-V><Tab>"
 
