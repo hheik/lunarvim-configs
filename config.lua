@@ -36,16 +36,26 @@ lvim.plugins = {
 		end,
 	},
 	{
-		"simrat39/rust-tools.nvim",
+		"mrcjkb/rustaceanvim",
+		version = "^5",
+		lazy = false,
+		ft = { "rust" },
 		config = function()
-			require('rust-tools').setup()
-		end
+			vim.g.rustaceanvim = {
+				server = {
+					on_attach = require("lvim.lsp").common_on_attach
+				}
+			}
+		end,
 	},
 }
 
+-- Disable lunarvim's default rust_analyzer
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
+
 -- Rust debugger using vscode extension for extra features
 -- Update this path
-local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
+local extension_path = vim.env.HOME .. '/.vscode-oss/extensions/vadimcn.vscode-lldb-1.11.1-universal/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb'
 local this_os = vim.loop.os_uname().sysname;
